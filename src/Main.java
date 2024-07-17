@@ -15,12 +15,14 @@ public class Main {
         Scanner translateS = new Scanner(System.in);
         String sentence = translateS.nextLine();
         word = sentence.toLowerCase();
-        translator();
+        translator(word);
+        /*String[] splitWord = word.split(" ");
+        translator(splitWord[i])*/
 
 
     }
 
-    public static void translator() {
+    public static void translator(String word) {
         // Path to the dictionary file
         filePath = "C:\\Users\\Covenant\\IdeaProjects\\Yoruba Translator\\src\\yoruba.txt";
 

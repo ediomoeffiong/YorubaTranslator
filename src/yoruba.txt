@@ -1,0 +1,3 @@
+boy=ọmọkunrin
+girl=omobirin
+woman=obinrin

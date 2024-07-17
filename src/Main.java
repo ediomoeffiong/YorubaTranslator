@@ -23,8 +23,6 @@ public class Main {
     }
 
     public static void translator(String word) {
-        // Path to the dictionary file
-        //filePath = "C:\\Users\\Covenant\\IdeaProjects\\Yoruba Translator\\src\\yoruba.txt";
         filePath = "..\\Yoruba Translator\\src\\yoruba.txt";
 
         // Read the file and populate the HashMap
@@ -46,9 +44,9 @@ public class Main {
         // Find and print the key for the given word
         String key = findKeyByValue(yoruba, word);
         if (key != null) {
-            System.out.println("The translation for the word " + word + " is " + key);
+            System.out.println(key);
         } else {
-            System.out.println("The word " + word + " is not found.");
+            System.out.println("Oops! " + word + " is unknown to me. I'm still trying to learn.");
         }
     }
 

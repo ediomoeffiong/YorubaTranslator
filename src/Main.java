@@ -24,7 +24,8 @@ public class Main {
 
     public static void translator(String word) {
         // Path to the dictionary file
-        filePath = "C:\\Users\\Covenant\\IdeaProjects\\Yoruba Translator\\src\\yoruba.txt";
+        //filePath = "C:\\Users\\Covenant\\IdeaProjects\\Yoruba Translator\\src\\yoruba.txt";
+        filePath = "..\\Yoruba Translator\\src\\yoruba.txt";
 
         // Read the file and populate the HashMap
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {

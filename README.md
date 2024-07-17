@@ -1,3 +1,3 @@
-## Yoruba Translator
+# Yoruba Translator
 
 There's nothing here!

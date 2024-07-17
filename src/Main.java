@@ -6,14 +6,15 @@ import java.io.FileReader;
 import java.io.IOException;
 public class Main {
     public static HashMap<String, String> yoruba = new HashMap<>();
-    public static String word;
+    public static String word, filePath, line;
     public static void main(String[] args) {
         System.out.println("---------------Yoruba Translator---------------");
 
 
-        System.out.print("Input english word: ");
+        System.out.print("Input a word: ");
         Scanner translateS = new Scanner(System.in);
-        word = translateS.nextLine();
+        String sentence = translateS.nextLine();
+        word = sentence.toLowerCase();
         translator();
 
 
@@ -21,11 +22,10 @@ public class Main {
 
     public static void translator() {
         // Path to the dictionary file
-        String filePath = "./src/Main/yoruba.txt";
+        filePath = "C:\\Users\\Covenant\\IdeaProjects\\Yoruba Translator\\src\\yoruba.txt";
 
         // Read the file and populate the HashMap
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String line;
             while ((line = br.readLine()) != null) {
                 // Split each line into key and value
                 String[] parts = line.split("=");
@@ -43,9 +43,9 @@ public class Main {
         // Find and print the key for the given word
         String key = findKeyByValue(yoruba, word);
         if (key != null) {
-            System.out.println("The translation for the word '" + word + "' is: " + key);
+            System.out.println("The translation for the word " + word + " is " + key);
         } else {
-            System.out.println("The word '" + word + "' is not found.");
+            System.out.println("The word " + word + " is not found.");
         }
     }
 

@@ -6,24 +6,44 @@ import java.io.FileReader;
 import java.io.IOException;
 public class Main {
     public static HashMap<String, String> yoruba = new HashMap<>();
-    public static String word, filePath, line;
+    public static String word, filePath, line, mergeWord, translatedWord;
+    public static String totalWord = "";
+    public static String[] splitWord;
+    public static boolean notFound;
     public static void main(String[] args) {
         System.out.println("---------------Yoruba Translator---------------");
 
 
         System.out.print("Input a word: ");
         Scanner translateS = new Scanner(System.in);
-        String sentence = translateS.nextLine();
-        word = sentence.toLowerCase();
+        word = translateS.nextLine();
+
         translator(word);
-        /*String[] splitWord = word.split(" ");
-        translator(splitWord[i])*/
+        if (notFound) {
+            sentenceCase();
+        }
+    }
 
-
+    public static void sentenceCase() {
+        splitWord = word.split(" ");
+        for (int i = 0; i < splitWord.length; i++) {
+            findKeyByValue(yoruba, splitWord[i]);
+            if (!notFound && i == 0) {
+                translator(splitWord[i]);
+            }
+            if (notFound && i == 0) {
+                mergeWord = splitWord[i] + " " + splitWord[i+1];
+                translator(mergeWord);
+            }
+            totalWord = totalWord.concat(" ").concat(translatedWord);
+        }
+        System.out.println(totalWord);
     }
 
     public static void translator(String word) {
         filePath = "..\\Yoruba Translator\\src\\yoruba.txt";
+
+        word = word.toLowerCase();
 
         // Read the file and populate the HashMap
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -44,9 +64,11 @@ public class Main {
         // Find and print the key for the given word
         String key = findKeyByValue(yoruba, word);
         if (key != null) {
+            translatedWord = key;
             System.out.println(key);
         } else {
-            System.out.println("Oops! " + word + " is unknown to me. I'm still trying to learn.");
+            //System.out.println("Oops! " + word + " is unknown to me. I'm still trying to learn.");
+            notFound = true;
         }
     }
 
@@ -54,9 +76,11 @@ public class Main {
     public static String findKeyByValue(HashMap<String, String> map, String value) {
         for (Map.Entry<String, String> entry : map.entrySet()) {
             if (entry.getValue().equals(value)) {
+                notFound = false;
                 return entry.getKey();
             }
         }
+        notFound = true;
         return null; // Return null if the value is not found
     }
 

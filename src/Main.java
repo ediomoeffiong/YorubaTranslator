@@ -4,6 +4,10 @@ import java.util.Map;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.File;
+
+// Update file path using
+// System.out.println("Absolute path: " + myObj.getAbsolutePath());
 public class Main {
     public static HashMap<String, String> yoruba = new HashMap<>();
     public static String word, filePath, line, mergeWord, translatedWord, key;
